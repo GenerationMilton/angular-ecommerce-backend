@@ -1,14 +1,13 @@
 package com.livemilton.ecommerce.entity;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
-import lombok.Generated;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-
 
 @Entity
 @Table(name="product")
@@ -53,4 +52,3 @@ public class Product {
     @UpdateTimestamp
     private Date lastUpdated;
 }
-

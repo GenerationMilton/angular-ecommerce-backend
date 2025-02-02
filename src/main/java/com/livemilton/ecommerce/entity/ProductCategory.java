@@ -1,11 +1,10 @@
 package com.livemilton.ecommerce.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.Set;
-
 
 @Entity
 @Table(name="product_category")
@@ -26,3 +25,4 @@ public class ProductCategory {
     private Set<Product> products;
 
 }
+
