@@ -1,0 +1,525 @@
+USE `full-stack-ecommerce`;
+
+SET foreign_key_checks = 0;
+
+--
+-- Table structure for table `country`
+--
+
+DROP TABLE IF EXISTS `country`;
+
+CREATE TABLE `country` (
+  `id` smallint unsigned NOT NULL,
+  `code` varchar(2) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+--
+-- Data for table `country`
+--
+
+INSERT INTO `country` VALUES
+(1, 'BR', 'Brazil'),
+(2, 'CA', 'Canada'),
+(3, 'DE', 'Germany'),
+(4, 'IN', 'India'),
+(5, 'TR', 'Turkey'),
+(6, 'US', 'United States'),
+(7, 'AR', 'Argentina'),
+(8, 'AU', 'Australia'),
+(9, 'BE', 'Belgium'),
+(10, 'BG', 'Bulgaria'),
+(11, 'CN', 'China'),
+(12, 'FR', 'France'),
+(13, 'GB', 'United Kingdom'),
+(14, 'IT', 'Italy'),
+(15, 'JP', 'Japan'),
+(16, 'MX', 'Mexico'),
+(17, 'NG', 'Nigeria'),
+(18, 'PL', 'Poland'),
+(19, 'RS', 'Serbia'),
+(20, 'ES', 'España');
+
+
+--
+-- Table structure for table `state`
+--
+
+DROP TABLE IF EXISTS `state`;
+
+CREATE TABLE `state` (
+  `id` smallint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `country_id` smallint unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_country` (`country_id`),
+  CONSTRAINT `fk_country` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+
+--
+-- Dumping data for table `state`
+--
+
+-- Para Brasil (id=1)
+INSERT INTO `state` VALUES
+(1, 'Acre', 1),
+(2, 'Alagoas', 1),
+(3, 'Amapá', 1),
+(4, 'Amazonas', 1),
+(5, 'Bahia', 1),
+(6, 'Ceará', 1),
+(7, 'Distrito Federal', 1),
+(8, 'Espírito Santo', 1),
+(9, 'Goiás', 1),
+(10, 'Maranhão', 1),
+(11, 'Mato Grosso do Sul', 1),
+(12, 'Mato Grosso', 1),
+(13, 'Minas Gerais', 1),
+(14, 'Paraná', 1),
+(15, 'Paraíba', 1),
+(16, 'Pará', 1),
+(17, 'Pernambuco', 1),
+(18, 'Piaui', 1),
+(19, 'Rio de Janeiro', 1),
+(20, 'Rio Grande do Norte', 1);
+
+-- Para Canadá (id=2)
+INSERT INTO `state` VALUES
+(21, 'Alberta', 2),
+(22, 'British Columbia', 2),
+(23, 'Manitoba', 2),
+(24, 'New Brunswick', 2),
+(25, 'Newfoundland and Labrador', 2),
+(26, 'Northwest Territories', 2),
+(27, 'Nova Scotia', 2),
+(28, 'Nunavut', 2),
+(29, 'Ontario', 2),
+(30, 'Prince Edward Island', 2),
+(31, 'Quebec', 2),
+(32, 'Saskatchewan', 2),
+(33, 'Yukon', 2),
+(34, 'Nunavut', 2),
+(35, 'Newfoundland', 2),
+(36, 'Ontario', 2),
+(37, 'British Columbia', 2),
+(38, 'Quebec', 2),
+(39, 'Manitoba', 2),
+(40, 'Nova Scotia', 2);
+
+-- Para Alemania (id=3)
+INSERT INTO `state` VALUES
+(41, 'Baden-Württemberg', 3),
+(42, 'Bavaria', 3),
+(43, 'Berlin', 3),
+(44, 'Brandenburg', 3),
+(45, 'Bremen', 3),
+(46, 'Hamburg', 3),
+(47, 'Hesse', 3),
+(48, 'Lower Saxony', 3),
+(49, 'Mecklenburg-Vorpommern', 3),
+(50, 'North Rhine-Westphalia', 3),
+(51, 'Rhineland-Palatinate', 3),
+(52, 'Saarland', 3),
+(53, 'Saxony', 3),
+(54, 'Saxony-Anhalt', 3),
+(55, 'Schleswig-Holstein', 3),
+(56, 'Thuringia', 3),
+(57, 'Brandenburg', 3),
+(58, 'Bavaria', 3),
+(59, 'Saxony', 3),
+(60, 'Hesse', 3);
+
+-- Para India (id=4)
+INSERT INTO `state` VALUES
+(61, 'Andhra Pradesh', 4),
+(62, 'Arunachal Pradesh', 4),
+(63, 'Assam', 4),
+(64, 'Bihar', 4),
+(65, 'Chhattisgarh', 4),
+(66, 'Goa', 4),
+(67, 'Gujarat', 4),
+(68, 'Haryana', 4),
+(69, 'Himachal Pradesh', 4),
+(70, 'Jammu & Kashmir', 4),
+(71, 'Jharkhand', 4),
+(72, 'Karnataka', 4),
+(73, 'Kerala', 4),
+(74, 'Madhya Pradesh', 4),
+(75, 'Maharashtra', 4),
+(76, 'Manipur', 4),
+(77, 'Meghalaya', 4),
+(78, 'Mizoram', 4),
+(79, 'Nagaland', 4),
+(80, 'Odisha', 4);
+
+-- Para Turquía (id=5)
+INSERT INTO `state` VALUES
+(81, 'Adıyaman', 5),
+(82, 'Afyonkarahisar', 5),
+(83, 'Ağrı', 5),
+(84, 'Aksaray', 5),
+(85, 'Amasya', 5),
+(86, 'Ankara', 5),
+(87, 'Antalya', 5),
+(88, 'Artvin', 5),
+(89, 'Aydın', 5),
+(90, 'Balıkesir', 5),
+(91, 'Bilecik', 5),
+(92, 'Bingöl', 5),
+(93, 'Bitlis', 5),
+(94, 'Bolu', 5),
+(95, 'Burdur', 5),
+(96, 'Bursa', 5),
+(97, 'Çanakkale', 5),
+(98, 'Çorum', 5),
+(99, 'Denizli', 5),
+(100, 'Diyarbakır', 5);
+
+-- Para Estados Unidos (id=6)
+INSERT INTO `state` VALUES
+(101, 'Alabama', 6),
+(102, 'Alaska', 6),
+(103, 'Arizona', 6),
+(104, 'Arkansas', 6),
+(105, 'California', 6),
+(106, 'Colorado', 6),
+(107, 'Connecticut', 6),
+(108, 'Delaware', 6),
+(109, 'District Of Columbia', 6),
+(110, 'Florida', 6),
+(111, 'Georgia', 6),
+(112, 'Hawaii', 6),
+(113, 'Idaho', 6),
+(114, 'Illinois', 6),
+(115, 'Indiana', 6),
+(116, 'Iowa', 6),
+(117, 'Kansas', 6),
+(118, 'Kentucky', 6),
+(119, 'Louisiana', 6),
+(120, 'Maine', 6);
+
+-- Para Argentina (id=7)
+INSERT INTO `state` VALUES
+(121, 'Buenos Aires', 7),
+(122, 'Catamarca', 7),
+(123, 'Chaco', 7),
+(124, 'Chubut', 7),
+(125, 'Córdoba', 7),
+(126, 'Corrientes', 7),
+(127, 'Entre Ríos', 7),
+(128, 'Formosa', 7),
+(129, 'Jujuy', 7),
+(130, 'La Pampa', 7),
+(131, 'La Rioja', 7),
+(132, 'Mendoza', 7),
+(133, 'Misiones', 7),
+(134, 'Neuquén', 7),
+(135, 'Río Negro', 7),
+(136, 'Salta', 7),
+(137, 'San Juan', 7),
+(138, 'San Luis', 7),
+(139, 'Santa Cruz', 7),
+(140, 'Santa Fe', 7);
+
+-- Para Australia (id=8)
+INSERT INTO `state` VALUES
+(141, 'New South Wales', 8),
+(142, 'Queensland', 8),
+(143, 'South Australia', 8),
+(144, 'Tasmania', 8),
+(145, 'Victoria', 8),
+(146, 'Western Australia', 8),
+(147, 'Australian Capital Territory', 8),
+(148, 'Northern Territory', 8),
+(149, 'Jervis Bay Territory', 8),
+(150, 'Norfolk Island', 8),
+(151, 'Lord Howe Island', 8),
+(152, 'Macquarie Island', 8),
+(153, 'King Island', 8),
+(154, 'Fraser Island', 8),
+(155, 'Christmas Island', 8),
+(156, 'Cocos Islands', 8),
+(157, 'Woodland', 8),
+(158, 'Central Coast', 8),
+(159, 'Murray-Darling', 8),
+(160, 'Greater Sydney', 8);
+
+-- Para Bélgica (id=9)
+INSERT INTO `state` VALUES
+(161, 'Antwerp', 9),
+(162, 'Brussels-Capital', 9),
+(163, 'East Flanders', 9),
+(164, 'Flemish Brabant', 9),
+(165, 'Hainaut', 9),
+(166, 'Liège', 9),
+(167, 'Limburg', 9),
+(168, 'Luxembourg', 9),
+(169, 'Namur', 9),
+(170, 'Walloon Brabant', 9),
+(171, 'West Flanders', 9),
+(172, 'Brussels', 9),
+(173, 'Vlaams Brabant', 9),
+(174, 'West-Vlaanderen', 9),
+(175, 'Oost-Vlaanderen', 9),
+(176, 'Hainaut', 9),
+(177, 'Liège', 9),
+(178, 'Limburg', 9),
+(179, 'Namur', 9),
+(180, 'Walloon Brabant', 9);
+
+-- Para Bulgaria (id=10)
+INSERT INTO `state` VALUES
+(181, 'Blagoevgrad', 10),
+(182, 'Burgas', 10),
+(183, 'Dobrich', 10),
+(184, 'Gabrovo', 10),
+(185, 'Haskovo', 10),
+(186, 'Kardzhali', 10),
+(187, 'Kyustendil', 10),
+(188, 'Lovech', 10),
+(189, 'Montana', 10),
+(190, 'Pazardzhik', 10),
+(191, 'Pernik', 10),
+(192, 'Pleven', 10),
+(193, 'Plovdiv', 10),
+(194, 'Razgrad', 10),
+(195, 'Ruse', 10),
+(196, 'Shumen', 10),
+(197, 'Silistra', 10),
+(198, 'Sliven', 10),
+(199, 'Sofia', 10),
+(200, 'Stara Zagora', 10);
+
+-- Para China (id=11)
+INSERT INTO `state` VALUES
+(201, 'Anhui', 11),
+(202, 'Beijing', 11),
+(203, 'Chongqing', 11),
+(204, 'Fujian', 11),
+(205, 'Gansu', 11),
+(206, 'Guangdong', 11),
+(207, 'Guizhou', 11),
+(208, 'Hainan', 11),
+(209, 'Hebei', 11),
+(210, 'Heilongjiang', 11),
+(211, 'Henan', 11),
+(212, 'Hubei', 11),
+(213, 'Hunan', 11),
+(214, 'Jiangsu', 11),
+(215, 'Jiangxi', 11),
+(216, 'Jilin', 11),
+(217, 'Liaoning', 11),
+(218, 'Macau', 11),
+(219, 'Ningxia', 11),
+(220, 'Qinghai', 11);
+
+-- Para Francia (id=12)
+INSERT INTO `state` VALUES
+(221, 'Alsace', 12),
+(222, 'Aquitaine', 12),
+(223, 'Auvergne', 12),
+(224, 'Brittany', 12),
+(225, 'Burgundy', 12),
+(226, 'Centre-Val de Loire', 12),
+(227, 'Corsica', 12),
+(228, 'Île-de-France', 12),
+(229, 'Languedoc-Roussillon', 12),
+(230, 'Limousin', 12),
+(231, 'Lorraine', 12),
+(232, 'Midi-Pyrénées', 12),
+(233, 'Nord-Pas-de-Calais', 12),
+(234, 'Normandy', 12),
+(235, 'Paca', 12),
+(236, 'Pays de la Loire', 12),
+(237, 'Picardy', 12),
+(238, 'Poitou-Charentes', 12),
+(239, 'Provence-Alpes-Côte d\'Azur', 12),
+(240, 'Rhône-Alpes', 12);
+
+-- Para Reino Unido (id=13)
+INSERT INTO `state` VALUES
+(241, 'England', 13),
+(242, 'Northern Ireland', 13),
+(243, 'Scotland', 13),
+(244, 'Wales', 13),
+(245, 'Greater London', 13),
+(246, 'West Midlands', 13),
+(247, 'East Midlands', 13),
+(248, 'South East', 13),
+(249, 'South West', 13),
+(250, 'North East', 13),
+(251, 'North West', 13),
+(252, 'Yorkshire and the Humber', 13),
+(253, 'East of England', 13),
+(254, 'Northumberland', 13),
+(255, 'Cornwall', 13),
+(256, 'Cumbria', 13),
+(257, 'Dorset', 13),
+(258, 'Hampshire', 13),
+(259, 'Kent', 13),
+(260, 'Lancashire', 13);
+
+-- Para Italia (id=14)
+INSERT INTO `state` VALUES
+(261, 'Abruzzo', 14),
+(262, 'Basilicata', 14),
+(263, 'Calabria', 14),
+(264, 'Campania', 14),
+(265, 'Emilia-Romagna', 14),
+(266, 'Friuli Venezia Giulia', 14),
+(267, 'Lazio', 14),
+(268, 'Liguria', 14),
+(269, 'Lombardy', 14),
+(270, 'Marche', 14),
+(271, 'Molise', 14),
+(272, 'Piedmont', 14),
+(273, 'Puglia', 14),
+(274, 'Sardinia', 14),
+(275, 'Sicily', 14),
+(276, 'Tuscany', 14),
+(277, 'Umbria', 14),
+(278, 'Aosta Valley', 14),
+(279, 'Veneto', 14),
+(280, 'Trentino-South Tyrol', 14);
+
+-- Para Japón (id=15)
+INSERT INTO `state` VALUES
+(281, 'Aichi', 15),
+(282, 'Akita', 15),
+(283, 'Amur', 15),
+(284, 'Chiba', 15),
+(285, 'Ehime', 15),
+(286, 'Fukui', 15),
+(287, 'Fukuoka', 15),
+(288, 'Gifu', 15),
+(289, 'Gunma', 15),
+(290, 'Hiroshima', 15),
+(291, 'Hokkaido', 15),
+(292, 'Hyogo', 15),
+(293, 'Ibaraki', 15),
+(294, 'Ishikawa', 15),
+(295, 'Iwakuni', 15),
+(296, 'Kagawa', 15),
+(297, 'Kochi', 15),
+(298, 'Kumamoto', 15),
+(299, 'Kyoto', 15),
+(300, 'Mie', 15);
+
+-- Para México (id=16)
+INSERT INTO `state` VALUES
+(301, 'Aguascalientes', 16),
+(302, 'Baja California', 16),
+(303, 'Baja California Sur', 16),
+(304, 'Campeche', 16),
+(305, 'Chiapas', 16),
+(306, 'Chihuahua', 16),
+(307, 'Coahuila', 16),
+(308, 'Colima', 16),
+(309, 'Durango', 16),
+(310, 'Guanajuato', 16),
+(311, 'Guerrero', 16),
+(312, 'Hidalgo', 16),
+(313, 'Jalisco', 16),
+(314, 'Mexico City', 16),
+(315, 'Mexico State', 16),
+(316, 'Michoacán', 16),
+(317, 'Morelos', 16),
+(318, 'Nayarit', 16),
+(319, 'Nuevo León', 16),
+(320, 'Oaxaca', 16);
+
+-- Para Nigeria (id=17)
+INSERT INTO `state` VALUES
+(321, 'Abia', 17),
+(322, 'Adamawa', 17),
+(323, 'Akwa Ibom', 17),
+(324, 'Anambra', 17),
+(325, 'Bauchi', 17),
+(326, 'Bayelsa', 17),
+(327, 'Benue', 17),
+(328, 'Borno', 17),
+(329, 'Cross River', 17),
+(330, 'Delta', 17),
+(331, 'Ebonyi', 17),
+(332, 'Edo', 17),
+(333, 'Ekiti', 17),
+(334, 'Enugu', 17),
+(335, 'Gombe', 17),
+(336, 'Imo', 17),
+(337, 'Jigawa', 17),
+(338, 'Kaduna', 17),
+(339, 'Kano', 17),
+(340, 'Katsina', 17);
+
+-- Para Polonia (id=18)
+INSERT INTO `state` VALUES
+(341, 'Greater Poland', 18),
+(342, 'Kuyavian-Pomeranian', 18),
+(343, 'Lesser Poland', 18),
+(344, 'Lodz', 18),
+(345, 'Lower Silesian', 18),
+(346, 'Lublin', 18),
+(347, 'Lubusz', 18),
+(348, 'Masovian', 18),
+(349, 'Opole', 18),
+(350, 'Podlaskie', 18),
+(351, 'Podkarpackie', 18),
+(352, 'Pomeranian', 18),
+(353, 'Silesian', 18),
+(354, 'Subcarpathian', 18),
+(355, 'Warmian-Masurian', 18),
+(356, 'West Pomeranian', 18),
+(357, 'Bialystok', 18),
+(358, 'Bydgoszcz', 18),
+(359, 'Gdansk', 18),
+(360, 'Gorzow Wielkopolski', 18);
+
+-- Para Serbia (id=19)
+INSERT INTO `state` VALUES
+(361, 'Belgrade', 19),
+(362, 'Vojvodina', 19),
+(363, 'Central Serbia', 19),
+(364, 'Kosovo', 19),
+(365, 'Sumadija', 19),
+(366, 'Srem', 19),
+(367, 'Pcinja', 19),
+(368, 'Bac', 19),
+(369, 'South Banat', 19),
+(370, 'West Morava', 19),
+(371, 'Nisava', 19),
+(372, 'Valjevo', 19),
+(373, 'Kopaonik', 19),
+(374, 'Timočka', 19),
+(375, 'Banat', 19),
+(376, 'Zajecar', 19),
+(377, 'Central Banat', 19),
+(378, 'Zlatibor', 19),
+(379, 'Raska', 19),
+(380, 'Kopaonik', 19);
+
+-- Para España (id=20)
+INSERT INTO `state` VALUES
+(381, 'Andalucia', 20),
+(382, 'Aragon', 20),
+(383, 'Asturias', 20),
+(384, 'Balearic Islands', 20),
+(385, 'Basque Country', 20),
+(386, 'Canary Islands', 20),
+(387, 'Cantabria', 20),
+(388, 'Castilla-La Mancha', 20),
+(389, 'Castilla y León', 20),
+(390, 'Catalonia', 20),
+(391, 'Extremadura', 20),
+(392, 'Galicia', 20),
+(393, 'Madrid', 20),
+(394, 'Murcia', 20),
+(395, 'Navarre', 20),
+(396, 'La Rioja', 20),
+(397, 'Valencia', 20),
+(398, 'Ceuta', 20),
+(399, 'Melilla', 20);
+
+SET foreign_key_checks = 1;
+
+
