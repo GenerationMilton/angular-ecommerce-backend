@@ -26,5 +26,8 @@ public class OrderItem {
     @Column(name="product_id")
     private Long productId;
 
+    //reference to order
+    private Order order;
+
 
 }
