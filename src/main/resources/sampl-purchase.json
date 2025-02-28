@@ -1,0 +1,42 @@
+//http://localhost:8080/api/checkout/purchase
+//POST
+{
+  "customer":{
+    "firstName":"milton",
+    "lastName":"muñoz",
+    "email":"milton@test.com"
+  },
+  "shippingAddress":{
+    "street":"calle 48 A sur n 88c 90",
+    "city":"Bogota",
+    "state":"Cundinamarca",
+    "country":"Colombia",
+    "zipCode":"110011"
+  },
+  "billingAddress":{
+    "street":"Calle 48A sur numero 88c 90",
+    "city":"Bogota",
+    "state":"Cundinamarca",
+    "country":"Colombia",
+    "zipCode":"110011"
+  },
+  "order":{
+    "totalPrice":36.98,
+    "totalQuantity":2
+  },
+  "orderItems":[
+    {
+      "imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",
+      "quantity":1,
+      "unitPrice":18.99,
+      "productId":26
+    },
+    {
+      "imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",
+      "quantity":1,
+      "unitPrice":17.99,
+      "productId":51
+    }
+  ]
+}
+
